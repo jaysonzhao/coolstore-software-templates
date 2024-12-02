@@ -27,7 +27,7 @@ spec:
           title: Repo Group
           type: string
           description: Your SCM host organization/group
-          default: rhdhub
+          default: development
     - title: Provide information about the new component
       required:
         - cluster_id
@@ -51,7 +51,8 @@ spec:
           ui:field: EntityPicker
           ui:options:
             catalogFilter:
-              kind: [User]
+              kind: 
+                - User
     - title: Provide Build Information
       required:
         - component_id
@@ -128,7 +129,7 @@ spec:
       input:
         appName: ${{parameters.component_id}}-gitops
         argoInstance: main
-        namespace: rhdhub
+        namespace: janus-argocd
         repoUrl: https://${{ parameters.host }}/${{ parameters.group }}/${{parameters.component_id}}-gitops.git
         path: 'argocd/'
   output:
